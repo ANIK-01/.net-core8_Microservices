@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{9459E685-8918-4806-BA0B-274832666B32}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Catalog", "Catalog", "{EBA1C3C0-6B06-46EE-BF10-A69B8ADAB8E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatalogApi", "src\Services\Catalog\CatalogApi\CatalogApi.csproj", "{AAB6B744-8EC5-4485-BAB1-A49DCC8752E9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{C1272044-FA5C-4CB4-AF84-6C1075047B74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingBlocks", "src\BuildingBlocks\BuildingBlocks\BuildingBlocks.csproj", "{7D75FB19-FC83-4A71-A6E5-AAB8A55F92F6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3ECAD784-CEC5-4249-A0CE-D3B03E915CED}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AAB6B744-8EC5-4485-BAB1-A49DCC8752E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAB6B744-8EC5-4485-BAB1-A49DCC8752E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAB6B744-8EC5-4485-BAB1-A49DCC8752E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAB6B744-8EC5-4485-BAB1-A49DCC8752E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D75FB19-FC83-4A71-A6E5-AAB8A55F92F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D75FB19-FC83-4A71-A6E5-AAB8A55F92F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D75FB19-FC83-4A71-A6E5-AAB8A55F92F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D75FB19-FC83-4A71-A6E5-AAB8A55F92F6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EBA1C3C0-6B06-46EE-BF10-A69B8ADAB8E7} = {9459E685-8918-4806-BA0B-274832666B32}
+		{AAB6B744-8EC5-4485-BAB1-A49DCC8752E9} = {EBA1C3C0-6B06-46EE-BF10-A69B8ADAB8E7}
+		{7D75FB19-FC83-4A71-A6E5-AAB8A55F92F6} = {C1272044-FA5C-4CB4-AF84-6C1075047B74}
+	EndGlobalSection
+EndGlobal
