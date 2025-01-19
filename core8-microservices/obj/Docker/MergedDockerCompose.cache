@@ -1,0 +1,26 @@
+name: dockercompose2595546192379255984
+services:
+  catalogdb:
+    container_name: catalogdb
+    environment:
+      POSTGRES_DB: CatalogDb
+      POSTGRES_PASSWORD: admin
+      POSTGRES_USER: postgres
+    image: postgres
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 5432
+        published: "6000"
+        protocol: tcp
+    restart: always
+    volumes:
+      - type: bind
+        source: C:/Projects/db
+        target: /var/lib/postgresql/Catalog_db
+        bind:
+          create_host_path: true
+networks:
+  default:
+    name: dockercompose2595546192379255984_default

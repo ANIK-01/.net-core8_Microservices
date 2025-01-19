@@ -1,0 +1,13 @@
+services:
+  catalogdb:
+    container_name: catalogdb
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=CatalogDb
+    restart: always
+    ports:
+      - "6000:5432"
+    volumes:
+      - C:/Projects/db:/var/lib/postgresql/Catalog_db
+ 
