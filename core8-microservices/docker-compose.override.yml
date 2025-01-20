@@ -10,4 +10,13 @@ services:
       - "6000:5432"
     volumes:
       - C:/Projects/db:/var/lib/postgresql/Catalog_db
- 
+
+  redis:
+    environment:
+      - REDIS_PASSWORD=
+    restart: always
+
+  redis_stack:
+    environment:
+      - REDIS_PASSWORD=
+    restart: always
