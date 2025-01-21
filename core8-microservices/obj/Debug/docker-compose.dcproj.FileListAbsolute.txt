@@ -1,1 +1,2 @@
 C:\Projects\.net-core8_Microservices\core8-microservices\obj\Debug\docker-compose.dcproj.CoreCompileInputs.cache
+D:\projects_all\TestProjects\.net-core8_Microservices\core8-microservices\obj\Debug\docker-compose.dcproj.CoreCompileInputs.cache
