@@ -1,5 +1,4 @@
 version: '3.8'
-
 services:
   catalogdb:
     image: postgres
@@ -19,5 +18,4 @@ volumes:
 networks:
   catalog_network:
     driver: bridge
-
 
