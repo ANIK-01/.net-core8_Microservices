@@ -1,5 +1,6 @@
 ﻿using BuildingBlocks.CQRS;
 using CatalogApi.Models;
+using CatalogApi.Products.GetProduct;
 
 namespace CatalogApi.Products.CreateProduct
 {
@@ -7,7 +8,7 @@ namespace CatalogApi.Products.CreateProduct
     public record CreateProductCommand(string Name, List<string> Category, string Description,string ImageFile, decimal Price) 
         : ICommand<CreateProductResult> ;
     public record CreateProductResult(Guid Id);
-    public class CreateProductCommandHandler (IDocumentSession session)
+    public class CreateProductCommandHandler (IDocumentSession session,ILogger<CreateProductCommandHandler> logger)
         : ICommandHandler<CreateProductCommand, CreateProductResult>
     {
         public async Task<CreateProductResult> Handle(CreateProductCommand command, CancellationToken cancellationToken)
