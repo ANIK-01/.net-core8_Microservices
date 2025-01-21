@@ -1,4 +1,4 @@
-name: dockercompose2595546192379255984
+name: dockercompose6891831645514535305
 services:
   catalogdb:
     container_name: catalogdb
@@ -21,23 +21,10 @@ services:
         target: /var/lib/postgresql/data
         volume: {}
       - type: bind
-        source: C:/Projects/db
+        source: D:/projects_all
         target: /var/lib/postgresql/Catalog_db
         bind:
           create_host_path: true
-  redis:
-    container_name: redis
-    environment:
-      REDIS_PASSWORD: ""
-    image: redis:latest
-    networks:
-      catalog_network: null
-    ports:
-      - mode: ingress
-        target: 6379
-        published: "6379"
-        protocol: tcp
-    restart: always
   redis_stack:
     container_name: redis_stack
     environment:
@@ -53,10 +40,10 @@ services:
     restart: always
 networks:
   catalog_network:
-    name: dockercompose2595546192379255984_catalog_network
+    name: dockercompose6891831645514535305_catalog_network
     driver: bridge
   default:
-    name: dockercompose2595546192379255984_default
+    name: dockercompose6891831645514535305_default
 volumes:
   postgres_catalog:
-    name: dockercompose2595546192379255984_postgres_catalog
+    name: dockercompose6891831645514535305_postgres_catalog

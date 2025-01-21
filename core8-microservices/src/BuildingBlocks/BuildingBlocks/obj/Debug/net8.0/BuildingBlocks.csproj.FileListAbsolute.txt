@@ -11,3 +11,16 @@ C:\Projects\.net-core8_Microservices\core8-microservices\src\BuildingBlocks\Buil
 C:\Projects\.net-core8_Microservices\core8-microservices\src\BuildingBlocks\BuildingBlocks\obj\Debug\net8.0\refint\BuildingBlocks.dll
 C:\Projects\.net-core8_Microservices\core8-microservices\src\BuildingBlocks\BuildingBlocks\obj\Debug\net8.0\BuildingBlocks.pdb
 C:\Projects\.net-core8_Microservices\core8-microservices\src\BuildingBlocks\BuildingBlocks\obj\Debug\net8.0\ref\BuildingBlocks.dll
+D:\projects_all\TestProjects\.net-core8_Microservices\core8-microservices\src\BuildingBlocks\BuildingBlocks\bin\Debug\net8.0\BuildingBlocks.deps.json
+D:\projects_all\TestProjects\.net-core8_Microservices\core8-microservices\src\BuildingBlocks\BuildingBlocks\bin\Debug\net8.0\BuildingBlocks.dll
+D:\projects_all\TestProjects\.net-core8_Microservices\core8-microservices\src\BuildingBlocks\BuildingBlocks\bin\Debug\net8.0\BuildingBlocks.pdb
+D:\projects_all\TestProjects\.net-core8_Microservices\core8-microservices\src\BuildingBlocks\BuildingBlocks\obj\Debug\net8.0\BuildingBlocks.csproj.AssemblyReference.cache
+D:\projects_all\TestProjects\.net-core8_Microservices\core8-microservices\src\BuildingBlocks\BuildingBlocks\obj\Debug\net8.0\BuildingBlocks.GeneratedMSBuildEditorConfig.editorconfig
+D:\projects_all\TestProjects\.net-core8_Microservices\core8-microservices\src\BuildingBlocks\BuildingBlocks\obj\Debug\net8.0\BuildingBlocks.AssemblyInfoInputs.cache
+D:\projects_all\TestProjects\.net-core8_Microservices\core8-microservices\src\BuildingBlocks\BuildingBlocks\obj\Debug\net8.0\BuildingBlocks.AssemblyInfo.cs
+D:\projects_all\TestProjects\.net-core8_Microservices\core8-microservices\src\BuildingBlocks\BuildingBlocks\obj\Debug\net8.0\BuildingBlocks.csproj.CoreCompileInputs.cache
+D:\projects_all\TestProjects\.net-core8_Microservices\core8-microservices\src\BuildingBlocks\BuildingBlocks\obj\Debug\net8.0\BuildingBlocks.sourcelink.json
+D:\projects_all\TestProjects\.net-core8_Microservices\core8-microservices\src\BuildingBlocks\BuildingBlocks\obj\Debug\net8.0\BuildingBlocks.dll
+D:\projects_all\TestProjects\.net-core8_Microservices\core8-microservices\src\BuildingBlocks\BuildingBlocks\obj\Debug\net8.0\refint\BuildingBlocks.dll
+D:\projects_all\TestProjects\.net-core8_Microservices\core8-microservices\src\BuildingBlocks\BuildingBlocks\obj\Debug\net8.0\BuildingBlocks.pdb
+D:\projects_all\TestProjects\.net-core8_Microservices\core8-microservices\src\BuildingBlocks\BuildingBlocks\obj\Debug\net8.0\ref\BuildingBlocks.dll
