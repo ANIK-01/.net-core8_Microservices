@@ -18,6 +18,34 @@
     ]
   },
   {
+    "ContainingType": "CatalogApi.Products.GetProduct.GetProductEndpoint\u002B\u003C\u003Ec",
+    "Method": "\u003CAddRoutes\u003Eb__0_0",
+    "RelativePath": "products",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "CatalogApi.Products.GetProduct.GetProductsResponse",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "application/problem\u002Bjson"
+        ],
+        "StatusCode": 400
+      }
+    ],
+    "EndpointName": "GetProduct",
+    "Description": "GetProduct",
+    "Summary": "GetProduct"
+  },
+  {
     "ContainingType": "CatalogApi.Products.CreateProduct.CreateProductEndpoint\u002B\u003C\u003Ec",
     "Method": "\u003CAddRoutes\u003Eb__0_0",
     "RelativePath": "products",
