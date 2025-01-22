@@ -4,7 +4,6 @@ services:
     container_name: catalogdb
     environment:
       POSTGRES_DB: CatalogDb
-      POSTGRES_HOST: localhost
       POSTGRES_PASSWORD: admin
       POSTGRES_USER: postgres
     image: postgres
@@ -37,7 +36,7 @@ services:
     ports:
       - mode: ingress
         target: 80
-        published: "5555"
+        published: "5544"
         protocol: tcp
     restart: always
   redis_stack:
@@ -53,6 +52,22 @@ services:
         published: "6380"
         protocol: tcp
     restart: always
+  seq:
+    container_name: seq
+    environment:
+      ACCEPT_EULA: "Y"
+    image: datalust/seq:latest
+    networks:
+      catalog_network: null
+    ports:
+      - mode: ingress
+        target: 80
+        published: "7001"
+        protocol: tcp
+      - mode: ingress
+        target: 5341
+        published: "7002"
+        protocol: tcp
 networks:
   catalog_network:
     name: dockercompose6891831645514535305_catalog_network

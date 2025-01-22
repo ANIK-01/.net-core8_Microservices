@@ -1339,6 +1339,23 @@
           }
         }
       },
+      "Serilog.Sinks.Seq/9.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Serilog": "4.2.0",
+          "Serilog.Sinks.File": "6.0.0"
+        },
+        "compile": {
+          "lib/net6.0/Serilog.Sinks.Seq.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Serilog.Sinks.Seq.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "System.Buffers/4.5.1": {
         "type": "package",
         "compile": {
@@ -4061,6 +4078,23 @@
         "serilog.sinks.file.nuspec"
       ]
     },
+    "Serilog.Sinks.Seq/9.0.0": {
+      "sha512": "aNU8A0K322q7+voPNmp1/qNPH+9QK8xvM1p72sMmCG0wGlshFzmtDW9QnVSoSYCj0MgQKcMOlgooovtBhRlNHw==",
+      "type": "package",
+      "path": "serilog.sinks.seq/9.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "icon.png",
+        "lib/net6.0/Serilog.Sinks.Seq.dll",
+        "lib/net6.0/Serilog.Sinks.Seq.xml",
+        "lib/netstandard2.0/Serilog.Sinks.Seq.dll",
+        "lib/netstandard2.0/Serilog.Sinks.Seq.xml",
+        "serilog.sinks.seq.9.0.0.nupkg.sha512",
+        "serilog.sinks.seq.nuspec"
+      ]
+    },
     "System.Buffers/4.5.1": {
       "sha512": "Rw7ijyl1qqRS0YQD/WycNst8hUUMgrMH4FCn1nNm27M4VxchZ1js3fVjQaANHO5f3sN4isvP4a+Met9Y4YomAg==",
       "type": "package",
@@ -4758,27 +4792,28 @@
       "Marten >= 7.36.0",
       "Microsoft.VisualStudio.Azure.Containers.Tools.Targets >= 1.21.0",
       "Serilog >= 4.2.0",
-      "Serilog.AspNetCore >= 9.0.0"
+      "Serilog.AspNetCore >= 9.0.0",
+      "Serilog.Sinks.Seq >= 9.0.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Anik\\.nuget\\packages\\": {},
+    "C:\\Users\\Asus\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Projects\\.net-core8_Microservices\\core8-microservices\\src\\Services\\Catalog\\CatalogApi\\CatalogApi.csproj",
+      "projectUniqueName": "D:\\projects_all\\TestProjects\\.net-core8_Microservices\\core8-microservices\\src\\Services\\Catalog\\CatalogApi\\CatalogApi.csproj",
       "projectName": "CatalogApi",
-      "projectPath": "C:\\Projects\\.net-core8_Microservices\\core8-microservices\\src\\Services\\Catalog\\CatalogApi\\CatalogApi.csproj",
-      "packagesPath": "C:\\Users\\Anik\\.nuget\\packages\\",
-      "outputPath": "C:\\Projects\\.net-core8_Microservices\\core8-microservices\\src\\Services\\Catalog\\CatalogApi\\obj\\",
+      "projectPath": "D:\\projects_all\\TestProjects\\.net-core8_Microservices\\core8-microservices\\src\\Services\\Catalog\\CatalogApi\\CatalogApi.csproj",
+      "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
+      "outputPath": "D:\\projects_all\\TestProjects\\.net-core8_Microservices\\core8-microservices\\src\\Services\\Catalog\\CatalogApi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Anik\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Asus\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -4793,8 +4828,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Projects\\.net-core8_Microservices\\core8-microservices\\src\\BuildingBlocks\\BuildingBlocks\\BuildingBlocks.csproj": {
-              "projectPath": "C:\\Projects\\.net-core8_Microservices\\core8-microservices\\src\\BuildingBlocks\\BuildingBlocks\\BuildingBlocks.csproj"
+            "D:\\projects_all\\TestProjects\\.net-core8_Microservices\\core8-microservices\\src\\BuildingBlocks\\BuildingBlocks\\BuildingBlocks.csproj": {
+              "projectPath": "D:\\projects_all\\TestProjects\\.net-core8_Microservices\\core8-microservices\\src\\BuildingBlocks\\BuildingBlocks\\BuildingBlocks.csproj"
             }
           }
         }
@@ -4834,6 +4869,10 @@
           "Serilog.AspNetCore": {
             "target": "Package",
             "version": "[9.0.0, )"
+          },
+          "Serilog.Sinks.Seq": {
+            "target": "Package",
+            "version": "[9.0.0, )"
           }
         },
         "imports": [
@@ -4855,7 +4894,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

@@ -1,0 +1,193 @@
+name: dockercompose6891831645514535305
+services:
+  catalogapi:
+    build:
+      context: D:\projects_all\TestProjects\.net-core8_Microservices\core8-microservices
+      dockerfile: src/Services/Catalog/CatalogApi/Dockerfile
+      args:
+        BUILD_CONFIGURATION: Debug
+        LAUNCHING_FROM_VS: "true"
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: CatalogApi
+      target: base
+    container_name: catalog_api
+    depends_on:
+      catalogdb:
+        condition: service_started
+        required: true
+      seq:
+        condition: service_started
+        required: true
+    entrypoint:
+      - dotnet
+      - --roll-forward
+      - Major
+      - /VSTools/DistrolessHelper/DistrolessHelper.dll
+      - --wait
+    environment:
+      ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
+      ASPNETCORE_URLS: https://+:8081;http://+:8080
+      ConnectionStrings__Database: User ID=postgres;Password=admin;Host=catalogdb;Port=2345;Database=CatalogDb;
+      DOTNET_USE_POLLING_FILE_WATCHER: "1"
+      NUGET_FALLBACK_PACKAGES: /.nuget/fallbackpackages
+      Seq__ServerUrl: http://localhost:7002
+    image: catalogapi:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /.nuget/packages --additionalProbingPath /.nuget/fallbackpackages  "/app/bin/Debug/net8.0/CatalogApi.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: dotnet --roll-forward Major /VSTools/DistrolessHelper/DistrolessHelper.dll --stop dotnet
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    networks:
+      catalog_network: null
+    ports:
+      - mode: ingress
+        target: 8080
+        published: "8080"
+        protocol: tcp
+      - mode: ingress
+        target: 8081
+        published: "8081"
+        protocol: tcp
+    tty: true
+    volumes:
+      - type: bind
+        source: D:\projects_all\TestProjects\.net-core8_Microservices\core8-microservices\src\Services\Catalog\CatalogApi
+        target: /app
+        bind:
+          create_host_path: true
+      - type: bind
+        source: D:\projects_all\TestProjects\.net-core8_Microservices\core8-microservices
+        target: /src
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\Asus\vsdbg\vs2017u5
+        target: /remote_debugger
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\Asus\.nuget\packages
+        target: /.nuget/packages
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages
+        target: /.nuget/fallbackpackages
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\Asus\AppData\Roaming\ASP.NET\Https
+        target: /root/.aspnet/https
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\Asus\AppData\Roaming\ASP.NET\Https
+        target: /home/app/.aspnet/https
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\Asus\AppData\Roaming\Microsoft\UserSecrets
+        target: /root/.microsoft/usersecrets
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\Asus\AppData\Roaming\Microsoft\UserSecrets
+        target: /home/app/.microsoft/usersecrets
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Sdks\Microsoft.Docker.Sdk\tools\linux-x64\net8.0
+        target: /VSTools
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\HotReload
+        target: /HotReloadAgent
+        read_only: true
+        bind:
+          create_host_path: true
+  catalogdb:
+    container_name: catalogdb
+    environment:
+      POSTGRES_DB: CatalogDb
+      POSTGRES_PASSWORD: admin
+      POSTGRES_USER: postgres
+    image: postgres
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 5432
+        published: "2345"
+        protocol: tcp
+    restart: always
+    volumes:
+      - type: volume
+        source: postgres_catalog
+        target: /var/lib/postgresql/data
+        volume: {}
+      - type: bind
+        source: D:/projects_all
+        target: /var/lib/postgresql/Catalog_db
+        bind:
+          create_host_path: true
+  pgadmin:
+    container_name: pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    image: dpage/pgadmin4
+    networks:
+      catalog_network: null
+    ports:
+      - mode: ingress
+        target: 80
+        published: "5544"
+        protocol: tcp
+    restart: always
+  redis_stack:
+    container_name: redis_stack
+    environment:
+      REDIS_PASSWORD: ""
+    image: redis/redis-stack:latest
+    networks:
+      catalog_network: null
+    ports:
+      - mode: ingress
+        target: 8001
+        published: "6380"
+        protocol: tcp
+    restart: always
+  seq:
+    container_name: seq
+    environment:
+      ACCEPT_EULA: "Y"
+    image: datalust/seq:latest
+    networks:
+      catalog_network: null
+    ports:
+      - mode: ingress
+        target: 5341
+        published: "7002"
+        protocol: tcp
+      - mode: ingress
+        target: 80
+        published: "7001"
+        protocol: tcp
+networks:
+  catalog_network:
+    name: dockercompose6891831645514535305_catalog_network
+    driver: bridge
+  default:
+    name: dockercompose6891831645514535305_default
+volumes:
+  postgres_catalog:
+    name: dockercompose6891831645514535305_postgres_catalog

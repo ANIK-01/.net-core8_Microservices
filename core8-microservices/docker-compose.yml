@@ -23,7 +23,36 @@ services:
       - PGADMIN_DEFAULT_PASSWORD=admin
     networks:
       - catalog_network
+  seq:
+    image: datalust/seq:latest
+    container_name: seq
+    ports:
+      - "7002:5341" # Seq ingestion port for logs
+      - "7001:80" # Seq web interface
+    environment:
+      - ACCEPT_EULA=Y
+    networks:
+      - catalog_network
+  catalogapi:
+    build:
+      context: . # Path to the directory containing the Dockerfile
+      dockerfile: src/Services/Catalog/CatalogApi/Dockerfile
+    container_name: catalog_api
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+    environment:
+      - ASPNETCORE_URLS= "https://+:8081;http://+:8080"
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/app/certificates/aspnetapp.pfx
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=admin
+    volumes:
+      - ./certificates:/app/certificates
 
+    depends_on:
+      - catalogdb
+      - seq
+    networks:
+      - catalog_network
 volumes:
   postgres_catalog:
 

@@ -1,5 +1,31 @@
 name: dockercompose6891831645514535305
 services:
+  catalogapi:
+    build:
+      context: D:\projects_all\TestProjects\.net-core8_Microservices\core8-microservices
+      dockerfile: src/Services/Catalog/CatalogApi/Dockerfile
+    container_name: catalog_api
+    depends_on:
+      catalogdb:
+        condition: service_started
+        required: true
+      seq:
+        condition: service_started
+        required: true
+    environment:
+      ConnectionStrings__Database: User ID=postgres;Password=admin;Host=catalogdb;Port=2345;Database=CatalogDb;
+      Seq__ServerUrl: http://localhost:7001
+    networks:
+      catalog_network: null
+    ports:
+      - mode: ingress
+        target: 8080
+        published: "8080"
+        protocol: tcp
+      - mode: ingress
+        target: 8081
+        published: "8081"
+        protocol: tcp
   catalogdb:
     container_name: catalogdb
     environment:
@@ -52,6 +78,22 @@ services:
         published: "6380"
         protocol: tcp
     restart: always
+  seq:
+    container_name: seq
+    environment:
+      ACCEPT_EULA: "Y"
+    image: datalust/seq:latest
+    networks:
+      catalog_network: null
+    ports:
+      - mode: ingress
+        target: 5341
+        published: "7002"
+        protocol: tcp
+      - mode: ingress
+        target: 80
+        published: "7001"
+        protocol: tcp
 networks:
   catalog_network:
     name: dockercompose6891831645514535305_catalog_network
