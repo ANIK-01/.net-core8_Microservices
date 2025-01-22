@@ -1454,23 +1454,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Anik\\.nuget\\packages\\": {},
+    "C:\\Users\\Asus\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Projects\\.net-core8_Microservices\\core8-microservices\\src\\BuildingBlocks\\BuildingBlocks\\BuildingBlocks.csproj",
+      "projectUniqueName": "D:\\projects_all\\TestProjects\\.net-core8_Microservices\\core8-microservices\\src\\BuildingBlocks\\BuildingBlocks\\BuildingBlocks.csproj",
       "projectName": "BuildingBlocks",
-      "projectPath": "C:\\Projects\\.net-core8_Microservices\\core8-microservices\\src\\BuildingBlocks\\BuildingBlocks\\BuildingBlocks.csproj",
-      "packagesPath": "C:\\Users\\Anik\\.nuget\\packages\\",
-      "outputPath": "C:\\Projects\\.net-core8_Microservices\\core8-microservices\\src\\BuildingBlocks\\BuildingBlocks\\obj\\",
+      "projectPath": "D:\\projects_all\\TestProjects\\.net-core8_Microservices\\core8-microservices\\src\\BuildingBlocks\\BuildingBlocks\\BuildingBlocks.csproj",
+      "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
+      "outputPath": "D:\\projects_all\\TestProjects\\.net-core8_Microservices\\core8-microservices\\src\\BuildingBlocks\\BuildingBlocks\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Anik\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Asus\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -1532,7 +1532,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

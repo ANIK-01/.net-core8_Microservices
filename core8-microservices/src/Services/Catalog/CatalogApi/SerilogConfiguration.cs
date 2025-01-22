@@ -8,12 +8,10 @@ namespace CatalogApi
     {
         public static void SerilogConfiguration(this IHostBuilder host)
         {
-            host.UseSerilog(configureLogger:(context, loggerConfig) =>
+            host.UseSerilog((context, loggerConfig) =>
 
             {
-                loggerConfig.WriteTo.Console();
-                loggerConfig.WriteTo.File(new JsonFormatter(),path: "logs/catalogs.txt", rollingInterval:RollingInterval.Day);
-
+                loggerConfig.ReadFrom.Configuration(context.Configuration);
 
             });
         }

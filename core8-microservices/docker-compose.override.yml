@@ -9,7 +9,7 @@ services:
     ports:
       - "2345:5432"
     volumes:
-      - C:/Projects/db:/var/lib/postgresql/Catalog_db
+      - D:/projects_all:/var/lib/postgresql/Catalog_db
 
   redis_stack:
     environment:
