@@ -16,7 +16,7 @@ namespace CatalogApi.Products.CreateProduct
             //Create product entity from command object
             //save to result 
             //return Create product result
-
+            logger.LogInformation("Start");
             var product = new Product
             {
                 Name = command.Name,
@@ -28,6 +28,7 @@ namespace CatalogApi.Products.CreateProduct
             };
             session.Store(product);
             await session.SaveChangesAsync(cancellationToken);
+            logger.LogInformation("ENd {@product}", product);
             return new CreateProductResult(product.Id);
         }
     }

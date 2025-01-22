@@ -1,5 +1,45 @@
-name: dockercompose6891831645514535305
+name: dockercompose2595546192379255984
 services:
+  catalogapi:
+    build:
+      context: C:\Projects\.net-core8_Microservices\core8-microservices
+      dockerfile: src/Services/Catalog/CatalogApi/Dockerfile
+    container_name: catalog_api
+    depends_on:
+      catalogdb:
+        condition: service_started
+        required: true
+      redis_stack:
+        condition: service_started
+        required: true
+      seq:
+        condition: service_started
+        required: true
+    environment:
+      ASPNETCORE_Kestrel__Certificates__Default__Password: admin
+      ASPNETCORE_Kestrel__Certificates__Default__Path: /app/certificates/aspnetapp.pfx
+      ASPNETCORE_URLS: '"https://+:9999;http://+:9998"'
+    networks:
+      catalog_network: null
+    ports:
+      - mode: ingress
+        target: 8080
+        published: "9998"
+        protocol: tcp
+      - mode: ingress
+        target: 8081
+        published: "9999"
+        protocol: tcp
+    restart: always
+    volumes:
+      - type: volume
+        source: postgres_catalog
+        target: /var/lib/postgresql/data
+        volume: {}
+      - type: volume
+        source: aspnet_certificates
+        target: /app/certificates
+        volume: {}
   catalogdb:
     container_name: catalogdb
     environment:
@@ -20,11 +60,6 @@ services:
         source: postgres_catalog
         target: /var/lib/postgresql/data
         volume: {}
-      - type: bind
-        source: D:/projects_all
-        target: /var/lib/postgresql/Catalog_db
-        bind:
-          create_host_path: true
   pgadmin:
     container_name: pgadmin4
     environment:
@@ -41,8 +76,6 @@ services:
     restart: always
   redis_stack:
     container_name: redis_stack
-    environment:
-      REDIS_PASSWORD: ""
     image: redis/redis-stack:latest
     networks:
       catalog_network: null
@@ -56,24 +89,27 @@ services:
     container_name: seq
     environment:
       ACCEPT_EULA: "Y"
-    image: datalust/seq
+    image: datalust/seq:latest
     networks:
       catalog_network: null
     ports:
       - mode: ingress
-        target: 80
-        published: "7001"
-        protocol: tcp
-      - mode: ingress
         target: 5341
         published: "7002"
         protocol: tcp
+      - mode: ingress
+        target: 80
+        published: "7001"
+        protocol: tcp
+    restart: always
 networks:
   catalog_network:
-    name: dockercompose6891831645514535305_catalog_network
+    name: dockercompose2595546192379255984_catalog_network
     driver: bridge
   default:
-    name: dockercompose6891831645514535305_default
+    name: dockercompose2595546192379255984_default
 volumes:
+  aspnet_certificates:
+    name: dockercompose2595546192379255984_aspnet_certificates
   postgres_catalog:
-    name: dockercompose6891831645514535305_postgres_catalog
+    name: dockercompose2595546192379255984_postgres_catalog
