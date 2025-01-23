@@ -10,7 +10,6 @@ services:
       labels:
         com.microsoft.created-by: visual-studio
         com.microsoft.visual-studio.project-name: CatalogApi
-      target: base
     container_name: catalog_api
     depends_on:
       catalogdb:
@@ -31,13 +30,10 @@ services:
     environment:
       ASPNETCORE_Kestrel__Certificates__Default__Password: admin
       ASPNETCORE_Kestrel__Certificates__Default__Path: /app/certificates/aspnetapp.pfx
-      ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
       ASPNETCORE_URLS: '"https://+:9999;http://+:9998"'
-      DOTNET_USE_POLLING_FILE_WATCHER: "1"
-      NUGET_FALLBACK_PACKAGES: /.nuget/fallbackpackages
-    image: catalogapi:dev
     labels:
-      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /.nuget/packages --additionalProbingPath /.nuget/fallbackpackages  "/app/bin/Debug/net8.0/CatalogApi.dll"'
+      com.microsoft.visual-studio.project-name: CatalogApi
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /.nuget/packages --additionalProbingPath /.nuget/fallbackpackages  "/app/CatalogApi.dll"'
       com.microsoft.visualstudio.debuggee.killprogram: dotnet --roll-forward Major /VSTools/DistrolessHelper/DistrolessHelper.dll --stop dotnet
       com.microsoft.visualstudio.debuggee.program: dotnet
       com.microsoft.visualstudio.debuggee.workingdirectory: /app
@@ -64,30 +60,8 @@ services:
         target: /app/certificates
         volume: {}
       - type: bind
-        source: D:\projects_all\TestProjects\.net-core8_Microservices\core8-microservices\src\Services\Catalog\CatalogApi
-        target: /app
-        bind:
-          create_host_path: true
-      - type: bind
-        source: D:\projects_all\TestProjects\.net-core8_Microservices\core8-microservices
-        target: /src
-        bind:
-          create_host_path: true
-      - type: bind
         source: C:\Users\Asus\vsdbg\vs2017u5
         target: /remote_debugger
-        bind:
-          create_host_path: true
-      - type: bind
-        source: C:\Users\Asus\.nuget\packages
-        target: /.nuget/packages
-        read_only: true
-        bind:
-          create_host_path: true
-      - type: bind
-        source: C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages
-        target: /.nuget/fallbackpackages
-        read_only: true
         bind:
           create_host_path: true
       - type: bind

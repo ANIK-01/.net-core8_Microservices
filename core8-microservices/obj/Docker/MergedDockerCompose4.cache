@@ -55,14 +55,11 @@ services:
     restart: always
     tty: true
     volumes:
-      - type: volume
-        source: postgres_catalog
-        target: /var/lib/postgresql/data
-        volume: {}
-      - type: volume
-        source: aspnet_certificates
+      - type: bind
+        source: C:/Users/Asus/.aspnet/https
         target: /app/certificates
-        volume: {}
+        bind:
+          create_host_path: true
       - type: bind
         source: D:\projects_all\TestProjects\.net-core8_Microservices\core8-microservices\src\Services\Catalog\CatalogApi
         target: /app
@@ -195,7 +192,5 @@ networks:
   default:
     name: dockercompose6891831645514535305_default
 volumes:
-  aspnet_certificates:
-    name: dockercompose6891831645514535305_aspnet_certificates
   postgres_catalog:
     name: dockercompose6891831645514535305_postgres_catalog
