@@ -2,7 +2,14 @@ using System.Net;
 using CatalogApi;
 using Serilog;
 var builder = WebApplication.CreateBuilder(args);
-
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.Listen(IPAddress.Any, 8080); // Listen on HTTP (Port 8080)
+    options.Listen(IPAddress.Any, 8081, listenOptions =>
+    {
+        listenOptions.UseHttps("/app/certificates/aspnetapp.pfx", "admin"); // HTTPS (Port 8081)
+    });
+});
 //Add services to the container
 builder.Services.AddCarter();
 builder.Services.AddMediatR(config =>
@@ -16,24 +23,10 @@ builder.Services.AddMarten(Opts =>
 
 //Serilog Configuration
 builder.Host.SerilogConfiguration();
-builder.WebHost.ConfigureKestrel(options =>
-{
-    var certPath = Path.Combine(Directory.GetCurrentDirectory(), "certificates", "aspnetapp.pfx");
-    var certPassword = "admin";
-    Console.WriteLine($"Certpath, {certPath}");
-    Console.WriteLine($"Certpass, {certPassword}");
-    options.Listen(IPAddress.Any, 8080);
-    options.Listen(IPAddress.Any, 8081, listenOptions =>
-    {
-        Console.WriteLine(listenOptions.UseHttps(certPath, certPassword));
-    });
-});
-
-
 
 var app = builder.Build();
 app.MapGet("/", () => "Hello from DOCKER");
-//Configure the HTTp request pipeline
+
 //app.UseSerilogger()
 app.MapCarter();
 app.UseStaticFiles();

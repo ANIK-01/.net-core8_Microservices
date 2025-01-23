@@ -2,10 +2,9 @@
 
 # This stage is used when running from VS in fast mode (Default for Debug configuration)
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
-USER $APP_UID
 WORKDIR /app
-EXPOSE 8080
-EXPOSE 8081
+EXPOSE 8080 #Docker container Http port 
+EXPOSE 8081 #Docker Container https port
 
 
 
@@ -17,7 +16,7 @@ COPY ["src/Services/Catalog/CatalogApi/CatalogApi.csproj", "src/Services/Catalog
 COPY ["src/BuildingBlocks/BuildingBlocks/BuildingBlocks.csproj", "src/BuildingBlocks/BuildingBlocks/"]
 RUN dotnet restore "./src/Services/Catalog/CatalogApi/CatalogApi.csproj"
 COPY . .
-WORKDIR "src/Services/Catalog/CatalogApi"
+WORKDIR "src/src/Services/Catalog/CatalogApi"
 RUN dotnet build "./CatalogApi.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # This stage is used to publish the service project to be copied to the final stage
@@ -30,9 +29,10 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 
-RUN echo "Certificate Path: $ASPNETCORE_Kestrel__Certificates__Default__Path"
-RUN echo "Certificate Password: $ASPNETCORE_Kestrel__Certificates__Default__Password"
-RUN mkdir -p /app/certificates
-COPY ./certificates/aspnetapp.pfx /app/certificates/
+# Create /app/certificates/ directory (just to be safe)
+#RUN mkdir -p /app/certificates
+
+
+COPY ./https/aspnetapp.pfx /app/certificates/
 
 ENTRYPOINT ["dotnet", "CatalogApi.dll"]

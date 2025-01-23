@@ -1,61 +1,79 @@
 version: '3.8'
+
 services:
   catalogdb:
     image: postgres
+    container_name: catalogdb
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=CatalogDb
+    restart: always
+    ports:
+      - "2345:5432" # Expose port 5432 in container to 2345 on host
     volumes:
-      - postgres_catalog:/var/lib/postgresql/data
+      - postgres_catalog:/var/lib/postgresql/data # Use a Docker volume for data persistence
 
   redis_stack:
     image: redis/redis-stack:latest
     container_name: redis_stack
     ports:
-      - "6380:8001"
+      - "6380:8001" # Expose redis stack port 8001 to host port 6380
+    restart: always
     networks:
       - catalog_network
 
   pgadmin:
     image: dpage/pgadmin4
     container_name: pgadmin4
-    ports:
-      - "5544:80"
     environment:
       - PGADMIN_DEFAULT_EMAIL=admin@admin.com
       - PGADMIN_DEFAULT_PASSWORD=admin
+    ports:
+      - "5544:80" # Expose pgAdmin UI on host port 5544
+    restart: always
     networks:
       - catalog_network
+
   seq:
     image: datalust/seq:latest
     container_name: seq
-    ports:
-      - "7002:5341" # Seq ingestion port for logs
-      - "7001:80" # Seq web interface
     environment:
       - ACCEPT_EULA=Y
+    ports:
+      - "7002:5341" # Seq ingestion port for logs
+      - "7001:80"   # Seq web interface
+    restart: always
     networks:
       - catalog_network
+
   catalogapi:
     build:
       context: . # Path to the directory containing the Dockerfile
       dockerfile: src/Services/Catalog/CatalogApi/Dockerfile
     container_name: catalog_api
     ports:
-      - "8080:8080"
-      - "8081:8081"
+      - "9998:8080" # Expose http port 8080 inside container to host port 9998
+      - "9999:8081" # Expose https port 8081 inside container to host port 9999
     environment:
-      - ASPNETCORE_URLS= "https://+:8081;http://+:8080"
+      - ASPNETCORE_URLS="https://+:9999;http://+:9998"
       - ASPNETCORE_Kestrel__Certificates__Default__Path=/app/certificates/aspnetapp.pfx
       - ASPNETCORE_Kestrel__Certificates__Default__Password=admin
     volumes:
-      - ./certificates:/app/certificates
-
+      - postgres_catalog:/var/lib/postgresql/data #- C:/Users/Anik/.aspnet/https:/app/certificates # Mount local certificates for the container ({Host Machine path}:{Container Storage path})
+      - aspnet_certificates:/app/certificates # Mount local certificates for the container ({docker volume} : {Container storage})#Faster
     depends_on:
       - catalogdb
       - seq
+      - redis_stack
     networks:
       - catalog_network
-volumes:
-  postgres_catalog:
+    restart: always
+
+volumes: ##This section is outside of container for the main docker to managed volume and not just a temporary bind mount
+  postgres_catalog: # Named volume for persisting PostgreSQL data
+  aspnet_certificates: # Named volume for persisting aspnetapp.pfx (https security)
 
 networks:
   catalog_network:
-    driver: bridge
+    driver: bridge # Using bridge network driver for inter-container communication

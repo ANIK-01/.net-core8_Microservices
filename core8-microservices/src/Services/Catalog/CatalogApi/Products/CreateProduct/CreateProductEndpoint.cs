@@ -14,10 +14,10 @@ namespace CatalogApi.Products.CreateProduct
                 async (CreateProductRequest request, ISender sender) =>
                  {
                     var command = request.Adapt<CreateProductCommand>();
-                     logger.LogInformation("CreateProduct {@request.Name}.Handle called with {@command}", command);
+                     logger.LogInformation("CreateProduct start.Handle called with {@command}", command);
 
                      var result = await sender.Send(command);
-                     logger.LogInformation("CreateProduct {@request.Name}.Handle called with {@result}", result);
+                     logger.LogInformation("CreateProduct end.Handle called with {@result}", result);
 
                      var response = result.Adapt<CreateProductResponse>();
                     return Results.Created($"/products/{response.Id}", response);
