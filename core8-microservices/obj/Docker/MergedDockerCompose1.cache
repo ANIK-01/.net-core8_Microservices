@@ -1,8 +1,8 @@
-name: dockercompose2595546192379255984
+name: dockercompose6891831645514535305
 services:
   catalogapi:
     build:
-      context: C:\Projects\.net-core8_Microservices\core8-microservices
+      context: D:\projects_all\TestProjects\.net-core8_Microservices\core8-microservices
       dockerfile: src/Services/Catalog/CatalogApi/Dockerfile
       args:
         BUILD_CONFIGURATION: Debug
@@ -56,30 +56,31 @@ services:
     tty: true
     volumes:
       - type: volume
-        source: postgres_catalog
-        target: /var/lib/postgresql/data
-        volume: {}
-      - type: volume
-        source: aspnet_certificates
-        target: /app/certificates
+        source: logHere
+        target: /app/logs
         volume: {}
       - type: bind
-        source: C:\Projects\.net-core8_Microservices\core8-microservices\src\Services\Catalog\CatalogApi
+        source: C:/Users/Asus/.aspnet/https
+        target: /app/certificates
+        bind:
+          create_host_path: true
+      - type: bind
+        source: D:\projects_all\TestProjects\.net-core8_Microservices\core8-microservices\src\Services\Catalog\CatalogApi
         target: /app
         bind:
           create_host_path: true
       - type: bind
-        source: C:\Projects\.net-core8_Microservices\core8-microservices
+        source: D:\projects_all\TestProjects\.net-core8_Microservices\core8-microservices
         target: /src
         bind:
           create_host_path: true
       - type: bind
-        source: C:\Users\Anik\vsdbg\vs2017u5
+        source: C:\Users\Asus\vsdbg\vs2017u5
         target: /remote_debugger
         bind:
           create_host_path: true
       - type: bind
-        source: C:\Users\Anik\.nuget\packages
+        source: C:\Users\Asus\.nuget\packages
         target: /.nuget/packages
         read_only: true
         bind:
@@ -91,25 +92,25 @@ services:
         bind:
           create_host_path: true
       - type: bind
-        source: C:\Users\Anik\AppData\Roaming\ASP.NET\Https
+        source: C:\Users\Asus\AppData\Roaming\ASP.NET\Https
         target: /root/.aspnet/https
         read_only: true
         bind:
           create_host_path: true
       - type: bind
-        source: C:\Users\Anik\AppData\Roaming\ASP.NET\Https
+        source: C:\Users\Asus\AppData\Roaming\ASP.NET\Https
         target: /home/app/.aspnet/https
         read_only: true
         bind:
           create_host_path: true
       - type: bind
-        source: C:\Users\Anik\AppData\Roaming\Microsoft\UserSecrets
+        source: C:\Users\Asus\AppData\Roaming\Microsoft\UserSecrets
         target: /root/.microsoft/usersecrets
         read_only: true
         bind:
           create_host_path: true
       - type: bind
-        source: C:\Users\Anik\AppData\Roaming\Microsoft\UserSecrets
+        source: C:\Users\Asus\AppData\Roaming\Microsoft\UserSecrets
         target: /home/app/.microsoft/usersecrets
         read_only: true
         bind:
@@ -190,12 +191,12 @@ services:
     restart: always
 networks:
   catalog_network:
-    name: dockercompose2595546192379255984_catalog_network
+    name: dockercompose6891831645514535305_catalog_network
     driver: bridge
   default:
-    name: dockercompose2595546192379255984_default
+    name: dockercompose6891831645514535305_default
 volumes:
-  aspnet_certificates:
-    name: dockercompose2595546192379255984_aspnet_certificates
+  logHere:
+    name: dockercompose6891831645514535305_logHere
   postgres_catalog:
-    name: dockercompose2595546192379255984_postgres_catalog
+    name: dockercompose6891831645514535305_postgres_catalog

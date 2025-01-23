@@ -14,15 +14,15 @@ services:
       - ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true
       - NUGET_FALLBACK_PACKAGES=/.nuget/fallbackpackages
     volumes:
-      - C:\Projects\.net-core8_Microservices\core8-microservices\src\Services\Catalog\CatalogApi:/app:rw
-      - C:\Projects\.net-core8_Microservices\core8-microservices:/src:rw
-      - C:\Users\Anik\vsdbg\vs2017u5:/remote_debugger:rw
-      - C:\Users\Anik\.nuget\packages:/.nuget/packages:ro
+      - D:\projects_all\TestProjects\.net-core8_Microservices\core8-microservices\src\Services\Catalog\CatalogApi:/app:rw
+      - D:\projects_all\TestProjects\.net-core8_Microservices\core8-microservices:/src:rw
+      - C:\Users\Asus\vsdbg\vs2017u5:/remote_debugger:rw
+      - C:\Users\Asus\.nuget\packages:/.nuget/packages:ro
       - C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages:/.nuget/fallbackpackages:ro
-      - C:\Users\Anik\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
-      - C:\Users\Anik\AppData\Roaming\ASP.NET\Https:/home/app/.aspnet/https:ro
-      - C:\Users\Anik\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
-      - C:\Users\Anik\AppData\Roaming\Microsoft\UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - C:\Users\Asus\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+      - C:\Users\Asus\AppData\Roaming\ASP.NET\Https:/home/app/.aspnet/https:ro
+      - C:\Users\Asus\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+      - C:\Users\Asus\AppData\Roaming\Microsoft\UserSecrets:/home/app/.microsoft/usersecrets:ro
       - C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Sdks\Microsoft.Docker.Sdk\tools\linux-x64\net8.0:/VSTools:ro
       - C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\HotReload:/HotReloadAgent:ro
 

@@ -4,10 +4,10 @@ using Serilog;
 var builder = WebApplication.CreateBuilder(args);
 builder.WebHost.ConfigureKestrel(options =>
 {
-    options.Listen(IPAddress.Any, 8080); // Listen on HTTP (Port 8080)
+    options.Listen(IPAddress.Any, 8080);
     options.Listen(IPAddress.Any, 8081, listenOptions =>
     {
-        listenOptions.UseHttps("/app/certificates/aspnetapp.pfx", "admin"); // HTTPS (Port 8081)
+        listenOptions.UseHttps("/app/certificates/aspnetapp.pfx", "admin");
     });
 });
 //Add services to the container

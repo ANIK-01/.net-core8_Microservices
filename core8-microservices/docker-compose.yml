@@ -49,19 +49,19 @@ services:
 
   catalogapi:
     build:
-      context: . # Path to the directory containing the Dockerfile
+      context: . 
       dockerfile: src/Services/Catalog/CatalogApi/Dockerfile
     container_name: catalog_api
     ports:
-      - "9998:8080" # Expose http port 8080 inside container to host port 9998
-      - "9999:8081" # Expose https port 8081 inside container to host port 9999
+      - "9998:8080" 
+      - "9999:8081" 
     environment:
       - ASPNETCORE_URLS="https://+:9999;http://+:9998"
       - ASPNETCORE_Kestrel__Certificates__Default__Path=/app/certificates/aspnetapp.pfx
       - ASPNETCORE_Kestrel__Certificates__Default__Password=admin
     volumes:
-      - postgres_catalog:/var/lib/postgresql/data #- C:/Users/Anik/.aspnet/https:/app/certificates # Mount local certificates for the container ({Host Machine path}:{Container Storage path})
-      - aspnet_certificates:/app/certificates # Mount local certificates for the container ({docker volume} : {Container storage})#Faster
+      - logHere:/app/logs
+      - C:/Users/Asus/.aspnet/https:/app/certificates # for this volume mount not work , u have to use bind mount with ur local pc
     depends_on:
       - catalogdb
       - seq
@@ -70,7 +70,8 @@ services:
       - catalog_network
     restart: always
 
-volumes: ##This section is outside of container for the main docker to managed volume and not just a temporary bind mount
+volumes: 
+  logHere:
   postgres_catalog: # Named volume for persisting PostgreSQL data
   aspnet_certificates: # Named volume for persisting aspnetapp.pfx (https security)
 

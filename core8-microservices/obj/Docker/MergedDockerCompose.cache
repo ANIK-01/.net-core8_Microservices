@@ -1,8 +1,8 @@
-name: dockercompose2595546192379255984
+name: dockercompose6891831645514535305
 services:
   catalogapi:
     build:
-      context: C:\Projects\.net-core8_Microservices\core8-microservices
+      context: D:\projects_all\TestProjects\.net-core8_Microservices\core8-microservices
       dockerfile: src/Services/Catalog/CatalogApi/Dockerfile
     container_name: catalog_api
     depends_on:
@@ -33,13 +33,14 @@ services:
     restart: always
     volumes:
       - type: volume
-        source: postgres_catalog
-        target: /var/lib/postgresql/data
+        source: logHere
+        target: /app/logs
         volume: {}
-      - type: volume
-        source: aspnet_certificates
+      - type: bind
+        source: C:/Users/Asus/.aspnet/https
         target: /app/certificates
-        volume: {}
+        bind:
+          create_host_path: true
   catalogdb:
     container_name: catalogdb
     environment:
@@ -104,12 +105,12 @@ services:
     restart: always
 networks:
   catalog_network:
-    name: dockercompose2595546192379255984_catalog_network
+    name: dockercompose6891831645514535305_catalog_network
     driver: bridge
   default:
-    name: dockercompose2595546192379255984_default
+    name: dockercompose6891831645514535305_default
 volumes:
-  aspnet_certificates:
-    name: dockercompose2595546192379255984_aspnet_certificates
+  logHere:
+    name: dockercompose6891831645514535305_logHere
   postgres_catalog:
-    name: dockercompose2595546192379255984_postgres_catalog
+    name: dockercompose6891831645514535305_postgres_catalog

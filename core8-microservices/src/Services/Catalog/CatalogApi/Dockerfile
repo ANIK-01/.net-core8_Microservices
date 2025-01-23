@@ -3,8 +3,8 @@
 # This stage is used when running from VS in fast mode (Default for Debug configuration)
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 WORKDIR /app
-EXPOSE 8080 #Docker container Http port 
-EXPOSE 8081 #Docker Container https port
+EXPOSE 8080 
+EXPOSE 8081
 
 
 
