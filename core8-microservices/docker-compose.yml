@@ -60,6 +60,7 @@ services:
       - ASPNETCORE_Kestrel__Certificates__Default__Path=/app/certificates/aspnetapp.pfx
       - ASPNETCORE_Kestrel__Certificates__Default__Password=admin
     volumes:
+      - logHere:/app/logs
       - C:/Users/Asus/.aspnet/https:/app/certificates # for this volume mount not work , u have to use bind mount with ur local pc
     depends_on:
       - catalogdb
@@ -70,6 +71,7 @@ services:
     restart: always
 
 volumes: 
+  logHere:
   postgres_catalog: # Named volume for persisting PostgreSQL data
   aspnet_certificates: # Named volume for persisting aspnetapp.pfx (https security)
 
